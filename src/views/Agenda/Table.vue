@@ -1,6 +1,7 @@
 <template>
 
   <b-card body-class="p-0" header-class="border-0">
+
     <template v-slot:header>
       <b-row align-v="center">
         <b-col>
@@ -39,6 +40,9 @@
         </template>
       </el-table-column>
     </el-table>
+
+    {{items}}//
+
   </b-card>
 </template>
 <script>
@@ -85,9 +89,50 @@
             unique: '190',
             bounceRate: '46,53%'
           }
-        ]
+        ],
+
+
+        currentPage:1,
+        items:[],
       }
-    }
+    },
+
+    created() {
+      this.getData()
+    },
+
+    methods:{
+      async getData() {
+
+        try {
+          let params = {
+            page: this.currentPage
+          }
+          this.auth.params = params
+
+
+          console.log(this.auth)
+          // this.isLoading = true
+          const response = await axios.get('agenda')
+          let data = response.data
+          this.items = data.date
+          this.total = data.total
+          this.perPage = data.per_page
+
+        } catch (err) {
+          this.$snotify.error(err);
+        } finally {
+          this.isLoading = false
+        }
+      },
+
+    },
+
+
+
+
+
+
   }
 </script>
 <style>
