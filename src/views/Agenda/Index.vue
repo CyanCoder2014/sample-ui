@@ -1,6 +1,7 @@
 <template>
   <div class="container pt-5">
-  <card class="mt-5">
+    <card class="mt-5">
+
     <b-row align-v="center" slot="header" >
       <b-col cols="8">
         <h3 class="mb-0">Manage {{objectName}}s</h3>

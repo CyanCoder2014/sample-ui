@@ -9,18 +9,28 @@ import App from './App.vue';
 
 // router setup
 import router from './routes/router';
-// plugin setup
 Vue.use(DashboardPlugin);
 
 
 import httpPlugin from "./https"
-
 Vue.use(httpPlugin)
 
 
-import Snotify from 'vue-snotify';
 
-Vue.use(Snotify)
+
+import Snotify, {
+  SnotifyPosition
+} from 'vue-snotify'
+const options = {
+  toast: {
+    position: SnotifyPosition.leftTop
+  }
+}
+Vue.use(Snotify, options)
+
+
+import * as VeeValidate from 'vee-validate';
+Vue.use(VeeValidate);
 
 
 /* eslint-disable no-new */

@@ -31,6 +31,16 @@ const routes = [
         name: 'Agenda List',
         component: () => import('../views/Agenda/Index.vue')
       },
+      {
+        path: '/agenda/add',
+        name: 'Agenda Add',
+        component: () => import('../views/Agenda/Add.vue')
+      },
+      {
+        path: '/agenda/edit/:id',
+        name: 'Agenda Edit',
+        component: () => import('../views/Agenda/Edit.vue')
+      },
 
 
     ]
