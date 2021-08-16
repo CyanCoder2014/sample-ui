@@ -1,54 +1,56 @@
 <template>
 
-  <b-card body-class="p-0" header-class="border-0">
+  <b-card body-class="p-2" header-class="border-0">
 
     <template v-slot:header>
       <b-row align-v="center">
         <b-col>
-          <h3 class="mb-0">Page visits</h3>
+          <h3 class="mb-0">{{makeTitle(objectName)}} List</h3>
         </b-col>
         <b-col class="text-right">
-          <a href="#!" class="btn btn-sm btn-primary">See all</a>
+          <router-link :to="'/'+objectName+'/add'" class="btn btn-sm btn-primary">Add {{objectName}}</router-link>
         </b-col>
       </b-row>
     </template>
 
-    <el-table class="table-responsive table"
-              :data="tableData"
-              header-row-class-name="thead-light">
-      <el-table-column label="Page name"
-                       min-width="130px"
-                       prop="page">
-        <template v-slot="{row}">
-          <div class="font-weight-600">{{row.page}}</div>
-        </template>
-      </el-table-column>
-      <el-table-column label="Visitors"
-                       min-width="70px"
-                       prop="visitors">
-      </el-table-column>
-      <el-table-column label="Unique users"
-                       min-width="90px"
-                       prop="unique">
-      </el-table-column>
 
-      <el-table-column label="Bounce rate"
-                       min-width="90px"
-                       prop="bounceRate">
-        <template v-slot="{row}">
-          {{row.bounceRate}}
-        </template>
-      </el-table-column>
-    </el-table>
+    <b-table
+        v-if="items && items.length > 0"
+        :key="items.id"
+        responsive
+        :fields="fields"
+        :items="items"
+    >
+      <template
+          v-slot:cell(tittle)="data"
+      >
+       <b>{{ data.item.title}}</b>
+      </template>
+      <template
+          v-slot:cell(actions)="data"
+      >
+        <b-button
+            v-b-tooltip.hover
+            title="See plan"
+            class="btn-plan p2"
+            variant="primary"
+            size="sm"
+        >
+         <span class="svg-container">
+            <i class="fas fa-user"></i>
+         </span>
+        </b-button>
+      </template>
+    </b-table>
 
-    {{items}}//
+
 
   </b-card>
 </template>
 <script>
   import { Table, TableColumn, DropdownMenu, DropdownItem, Dropdown} from 'element-ui'
   export default {
-    name: 'page-visits-table',
+    name: 'list-table',
     components: {
       [Table.name]: Table,
       [TableColumn.name]: TableColumn,
@@ -56,6 +58,12 @@
       [DropdownItem.name]: DropdownItem,
       [DropdownMenu.name]: DropdownMenu,
     },
+
+    props:{
+      objectName: '',
+      fields:[],
+    },
+
     data() {
       return {
         tableData: [
@@ -105,26 +113,36 @@
       async getData() {
 
         try {
-          let params = {
-            page: this.currentPage
-          }
-          this.auth.params = params
+          // let params = {
+          //   page: this.currentPage
+          // }
+          // this.auth.params = params
 
 
-          console.log(this.auth)
           // this.isLoading = true
           const response = await axios.get('agenda')
           let data = response.data
-          this.items = data.date
+          this.items = data.data
           this.total = data.total
           this.perPage = data.per_page
 
+          // this.tableData = this.items
+
+          this.items.map(item => {
+            this.tableData.push(item.title)
+          })
+
+
         } catch (err) {
-          this.$snotify.error(err);
+          // this.$snotify.error(err);
         } finally {
           this.isLoading = false
         }
       },
+
+      makeTitle(string){
+        return string.charAt(0).toUpperCase() + string.slice(1)
+      }
 
     },
 
