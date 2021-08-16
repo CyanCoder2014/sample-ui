@@ -18,6 +18,11 @@ import httpPlugin from "./https"
 Vue.use(httpPlugin)
 
 
+import Snotify from 'vue-snotify';
+
+Vue.use(Snotify)
+
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

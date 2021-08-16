@@ -37,7 +37,7 @@
             size="sm"
         >
          <span class="svg-container">
-            <i class="fas fa-user"></i>
+            <i class="fas fa-t"></i>
          </span>
         </b-button>
       </template>
@@ -66,42 +66,11 @@
 
     data() {
       return {
-        tableData: [
-          {
-            page: '/argon/',
-            visitors: '4,569',
-            unique: '340',
-            bounceRate: '46,53%'
-          },
-          {
-            page: '/argon/index.html',
-            visitors: '3,985',
-            unique: '319',
-            bounceRate: '46,53%'
-          },
-          {
-            page: '/argon/charts.html',
-            visitors: '3,513',
-            unique: '294',
-            bounceRate: '36,49%'
-          },
-          {
-            page: '/argon/tables.html',
-            visitors: '2,050',
-            unique: '147',
-            bounceRate: '50,87%'
-          },
-          {
-            page: '/argon/profile.html',
-            visitors: '1,795',
-            unique: '190',
-            bounceRate: '46,53%'
-          }
-        ],
 
-
+        isLoading:false,
         currentPage:1,
         items:[],
+
       }
     },
 
@@ -116,8 +85,6 @@
           // let params = {
           //   page: this.currentPage
           // }
-          // this.auth.params = params
-
 
           // this.isLoading = true
           const response = await axios.get('agenda')
@@ -126,17 +93,10 @@
           this.total = data.total
           this.perPage = data.per_page
 
-          // this.tableData = this.items
-
-          this.items.map(item => {
-            this.tableData.push(item.title)
-          })
-
-
         } catch (err) {
           // this.$snotify.error(err);
         } finally {
-          this.isLoading = false
+          // this.isLoading = false
         }
       },
 
