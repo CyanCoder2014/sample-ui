@@ -12,10 +12,11 @@
               type="text"
               placeholder=""
               v-model="item.title"
+              :class="inputClass('title')"
           >
           </b-input>
 
-
+          <span class="text-danger" v-text="showErrorMassage('title')"></span>
 
         </b-col>
         <b-col lg="4">
@@ -25,13 +26,24 @@
               label="Date"
               placeholder=""
               v-model="item.date"
+              :class="inputClass('date')"
           >
           </b-input>
+
+          <span class="text-danger" v-text="showErrorMassage('date')"></span>
+
         </b-col>
         <b-col lg="4">
           <label>State</label>
-          <b-select v-model="item.state" label="State" :options="options">
+          <b-select v-model="item.state"
+                    label="State"
+                    :options="options"
+                    :class="inputClass('state')">
           </b-select>
+
+          <span class="text-danger" v-text="showErrorMassage('state')"></span>
+
+
         </b-col>
       </b-row>
     </div>
@@ -40,16 +52,19 @@
     <div class="pl-lg-4">
       <b-form-group label="Note" label-class="form-control-label" class="mb-0" label-for="about-form-textaria">
         <!--  <label class="form-control-label">About Me</label> -->
-        <b-form-textarea v-model="item.note" rows="3" value="" id="about-form-textaria"
+        <b-form-textarea v-model="item.note" rows="3" value="" id="about-form-textaria" :class="inputClass('note')"
                          placeholder="Description ..."></b-form-textarea>
+
+        <span class="text-danger" v-text="showErrorMassage('note')"></span>
+
       </b-form-group>
     </div>
 
 
-    <div class="pl-lg-4">
+    <div class="pl-lg-4 mt-3">
       <b-row>
         <b-col lg="12">
-          <b-btn type="submit">Save</b-btn>
+          <b-btn type="submit" variant="success">Save</b-btn>
         </b-col>
       </b-row>
     </div>
@@ -112,6 +127,19 @@ export default {
       return !!this.errors.length
     },
 
+    inputClass(field){
+      if (this.errors.find(element => element.field  === field))
+        return 'border-danger'
+      else
+        return ''
+    },
+
+    showErrorMassage(field){
+      var error = this.errors.find(element => element.field  === field)
+      if (error)
+        return error.message
+
+    }
 
   }
 
