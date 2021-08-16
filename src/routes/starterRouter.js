@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import DashboardLayout from '../views/Starter/SampleLayout.vue';
-import Starter from '../views/Starter/SamplePage.vue';
+import Dashboard from '../views/Dashboard';
 
 Vue.use(Router);
 
@@ -11,14 +10,8 @@ export default new Router({
       path: '/',
       name: 'home',
       redirect: '/dashboard',
-      component: DashboardLayout,
-      children: [
-        {
-          path: 'dashboard',
-          name: 'dashboard',
-          components: { default: Starter }
-        }
-      ]
+      component: Dashboard,
+      children: []
     }
   ],
   scrollBehavior: (to, from ,savedPosition) => {

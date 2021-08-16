@@ -4,58 +4,19 @@
     <base-header class="pb-6 pb-8 pt-5 pt-md-8 bg-gradient-success">
       <!-- Card stats -->
       <b-row>
-        <b-col xl="3" md="6">
-          <stats-card title="sample"
-                      type="gradient-red"
-                      sub-title="350,897"
-                      icon="ni ni-active-40"
-                      class="mb-4">
+<!--        <b-col xl="3" md="6">-->
+<!--          <stats-card title="sample"-->
+<!--                      type="gradient-red"-->
+<!--                      sub-title="350,897"-->
+<!--                      icon="ni ni-active-40"-->
+<!--                      class="mb-4">-->
 
-            <template slot="footer">
-              <span class="text-success mr-2">0</span>
-              <span class="text-nowrap">-</span>
-            </template>
-          </stats-card>
-        </b-col>
-        <b-col xl="3" md="6">
-          <stats-card title="sample"
-                      type="gradient-red"
-                      sub-title="350,897"
-                      icon="ni ni-active-40"
-                      class="mb-4">
-
-            <template slot="footer">
-              <span class="text-success mr-2">0</span>
-              <span class="text-nowrap">-</span>
-            </template>
-          </stats-card>
-        </b-col>
-        <b-col xl="3" md="6">
-          <stats-card title="sample"
-                      type="gradient-red"
-                      sub-title="350,897"
-                      icon="ni ni-active-40"
-                      class="mb-4">
-
-            <template slot="footer">
-              <span class="text-success mr-2">0</span>
-              <span class="text-nowrap">-</span>
-            </template>
-          </stats-card>
-        </b-col>
-        <b-col xl="3" md="6">
-          <stats-card title="sample"
-                      type="gradient-red"
-                      sub-title="350,897"
-                      icon="ni ni-active-40"
-                      class="mb-4">
-
-            <template slot="footer">
-              <span class="text-success mr-2">0</span>
-              <span class="text-nowrap">-</span>
-            </template>
-          </stats-card>
-        </b-col>
+<!--            <template slot="footer">-->
+<!--              <span class="text-success mr-2">0</span>-->
+<!--              <span class="text-nowrap">-</span>-->
+<!--            </template>-->
+<!--          </stats-card>-->
+<!--        </b-col>-->
       </b-row>
     </base-header>
 
