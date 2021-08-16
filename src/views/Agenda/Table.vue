@@ -45,7 +45,7 @@
             class="btn-plan p2"
             variant="warning"
             size="sm"
-            @click="$router.push({ path: objectName+'/edit/'+data.item.id })"
+            @click="$router.push({ path: '/'+objectName+'/edit/'+data.item.id })"
         >
          <span class="svg-container">
             <i class="fas fa-edit"></i>
